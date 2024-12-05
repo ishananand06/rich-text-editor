@@ -1,14 +1,9 @@
-import { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap
-import Editor from './Editor'; // Import the Editor component
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="container">
-      <h1 className="text-center my-4">Rich Text Editor</h1>
-      
-      {/* Add the Editor Component */}
-      <Editor />
+    <div>
+      <Header></Header>
     </div>
   );
 }
