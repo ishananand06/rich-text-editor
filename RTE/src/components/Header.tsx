@@ -1,12 +1,17 @@
-import { Navbar, Container, Nav, Button, NavDropdown } from 'react-bootstrap';
+import { Navbar, Container, Nav, Button, NavDropdown } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "@flaticon/flaticon-uicons/css/all/all.css";
 
 function Header() {
   return (
-    <div>
+    <>
       {/* First Row of Navbar */}
       <Navbar bg="light" expand="lg" className="shadow-sm">
         <Container>
-          <Navbar.Brand href="#home" className="fw-bold text-dark">Untitled Document</Navbar.Brand>
+          <Navbar.Brand href="#home" className="fw-bold text-dark">
+            Untitled Document
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">
             <Nav className="me-auto">
@@ -15,15 +20,6 @@ function Header() {
                 <NavDropdown.Item href="#open">Open</NavDropdown.Item>
                 <NavDropdown.Item href="#save">Save</NavDropdown.Item>
                 <NavDropdown.Item href="#download">Download</NavDropdown.Item>
-              </NavDropdown>
-
-              <NavDropdown title="Edit" id="editDropdown">
-                <NavDropdown.Item href="#undo">Undo</NavDropdown.Item>
-                <NavDropdown.Item href="#redo">Redo</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#cut">Cut</NavDropdown.Item>
-                <NavDropdown.Item href="#copy">Copy</NavDropdown.Item>
-                <NavDropdown.Item href="#paste">Paste</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Nav>
@@ -34,27 +30,180 @@ function Header() {
                 <NavDropdown.Item href="#logout">Logout</NavDropdown.Item>
               </NavDropdown>
 
-              <Button variant="outline-primary" className="ms-2">Share</Button>
+              <Button variant="outline-primary" className="ms-2">
+                Share
+              </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
       {/* Second Row of Navbar (Toolbar with editing buttons) */}
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Nav className="me-auto">
-            <Button variant="outline-secondary" className="me-2">Bold</Button>
-            <Button variant="outline-secondary" className="me-2">Italic</Button>
-            <Button variant="outline-secondary" className="me-2">Underline</Button>
-            <Button variant="outline-secondary" className="me-2">Align Left</Button>
-            <Button variant="outline-secondary" className="me-2">Align Center</Button>
-            <Button variant="outline-secondary" className="me-2">Align Right</Button>
-          </Nav>
-        </Container>
-      </Navbar>
-    </div>
+      <nav className="navbar bg-light p-3 border-bottom">
+        <div className="container-fluid d-flex justify-content-between align-items-center">
+          {/* Left Section: Undo and Redo Icons */}
+          <div className="d-flex align-items-center">
+            <button className="btn">
+              <i className="fi fi-rr-undo-alt fs-5" title="Undo"></i>
+            </button>
+            <button className="btn">
+              <i className="fi fi-rr-redo-alt fs-5" title="Redo"></i>
+            </button>
+          </div>
+
+          {/* Center Section: Dropdowns and Toolbar */}
+          <div className="d-flex align-items-center gap-3 mx-auto">
+            {/* Normal Text Dropdown */}
+            <div className="dropdown">
+              <button
+                className="btn btn-outline-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Normal Text
+              </button>
+              <ul className="dropdown-menu">
+                <li>
+                  <button className="dropdown-item">Heading 1</button>
+                </li>
+                <li>
+                  <button className="dropdown-item">Heading 2</button>
+                </li>
+                <li>
+                  <button className="dropdown-item">Heading 3</button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Alignment Dropdown */}
+            <div className="dropdown">
+              <button
+                className="btn btn-outline-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i className="fi fi-rr-align-left"></i>
+              </button>
+              <ul className="dropdown-menu">
+                <li>
+                  <button className="dropdown-item">
+                    <i className="fi fi-rr-align-left"></i> Align Left
+                  </button>
+                </li>
+                <li>
+                  <button className="dropdown-item">
+                    <i className="fi fi-rr-align-center"></i> Align Center
+                  </button>
+                </li>
+                <li>
+                  <button className="dropdown-item">
+                    <i className="fi fi-rr-symbol"></i> Align Right
+                  </button>
+                </li>
+                <li>
+                  <button className="dropdown-item">
+                    <i className="fi fi-rr-align-justify"></i> Justify
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Font Dropdown */}
+            <div className="dropdown">
+              <button
+                className="btn btn-outline-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Font
+              </button>
+              <ul className="dropdown-menu">
+                <li>
+                  <button className="dropdown-item">Arial</button>
+                </li>
+                <li>
+                  <button className="dropdown-item">Times New Roman</button>
+                </li>
+                <li>
+                  <button className="dropdown-item">Roboto</button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Font Size Dropdown */}
+            <div className="dropdown">
+              <button
+                className="btn btn-outline-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                12
+              </button>
+              <ul className="dropdown-menu">
+                <li>
+                  <button className="dropdown-item">10</button>
+                </li>
+                <li>
+                  <button className="dropdown-item">12</button>
+                </li>
+                <li>
+                  <button className="dropdown-item">14</button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Font Color Picker */}
+            <input
+              type="color"
+              className="form-control form-control-color"
+              title="Font Color"
+            />
+
+            {/* Formatting Icons */}
+            <button className="btn btn-outline-secondary">
+              <b>B</b>
+            </button>
+            <button className="btn btn-outline-secondary">
+              <i>I</i>
+            </button>
+            <button className="btn btn-outline-secondary">
+              <u>U</u>
+            </button>
+            <button className="btn btn-outline-secondary">
+              <s>S</s>
+            </button>
+            <button className="btn btn-outline-secondary" title="Highlight">
+              <i className="fi fi-rr-highlighter-line"></i>
+            </button>
+            <button
+              className="btn btn-outline-secondary"
+              title="Erase Formatting"
+            >
+              <i className="fi fi-rr-eraser"></i>
+            </button>
+
+            {/* List and Insert Icons */}
+            <button className="btn btn-outline-secondary" title="Bullet Points">
+              <i className="fi fi-rr-list"></i>
+            </button>
+            <button className="btn btn-outline-secondary" title="Insert Image">
+              <i className="fi fi-rr-picture"></i>
+            </button>
+            <button className="btn btn-outline-secondary" title="Insert Link">
+              <i className="fi fi-rr-link"></i>
+            </button>
+          </div>
+
+          {/* Empty Div for Right Section */}
+          <div></div>
+        </div>
+      </nav>
+    </>
   );
-};
+}
 
 export default Header;
