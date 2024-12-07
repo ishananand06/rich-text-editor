@@ -45,10 +45,18 @@ const Header = ({ editor }: { editor: any }) => {
         <div className="container-fluid d-flex justify-content-between align-items-center">
           {/* Left Section: Undo and Redo Icons */}
           <div className="d-flex align-items-center">
-            <button className="btn">
+            <button
+              className="btn"
+              onClick={() => editor.chain().focus().undo().run()}
+              disabled={!editor.can().undo()}
+            >
               <i className="fi fi-rr-undo-alt fs-5" title="Undo"></i>
             </button>
-            <button className="btn">
+            <button
+              className="btn"
+              onClick={() => editor.chain().focus().redo().run()}
+              disabled={!editor.can().redo()}
+            >
               <i className="fi fi-rr-redo-alt fs-5" title="Redo"></i>
             </button>
           </div>
