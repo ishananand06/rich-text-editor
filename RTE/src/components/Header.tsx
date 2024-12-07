@@ -129,27 +129,48 @@ const Header = ({ editor }: { editor: any }) => {
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                title="Align"
               >
                 <i className="fi fi-rr-align-left"></i>
               </button>
               <ul className="dropdown-menu">
                 <li>
-                  <button className="dropdown-item">
+                  <button
+                    className="dropdown-item"
+                    onClick={() =>
+                      editor.chain().focus().setTextAlign("left").run()
+                    }
+                  >
                     <i className="fi fi-rr-align-left"></i> Align Left
                   </button>
                 </li>
                 <li>
-                  <button className="dropdown-item">
+                  <button
+                    className="dropdown-item"
+                    onClick={() =>
+                      editor.chain().focus().setTextAlign("center").run()
+                    }
+                  >
                     <i className="fi fi-rr-align-center"></i> Align Center
                   </button>
                 </li>
                 <li>
-                  <button className="dropdown-item">
+                  <button
+                    className="dropdown-item"
+                    onClick={() =>
+                      editor.chain().focus().setTextAlign("right").run()
+                    }
+                  >
                     <i className="fi fi-rr-symbol"></i> Align Right
                   </button>
                 </li>
                 <li>
-                  <button className="dropdown-item">
+                  <button
+                    className="dropdown-item"
+                    onClick={() =>
+                      editor.chain().focus().setTextAlign("justify").run()
+                    }
+                  >
                     <i className="fi fi-rr-align-justify"></i> Justify
                   </button>
                 </li>
