@@ -184,19 +184,30 @@ const Header = ({ editor }: { editor: any }) => {
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                title="Font"
               >
                 Font
               </button>
               <ul className="dropdown-menu">
-                <li>
-                  <button className="dropdown-item">Arial</button>
-                </li>
-                <li>
-                  <button className="dropdown-item">Times New Roman</button>
-                </li>
-                <li>
-                  <button className="dropdown-item">Roboto</button>
-                </li>
+                {[
+                  "Arial",
+                  "Times New Roman",
+                  "Courier New",
+                  "Verdana",
+                  "Georgia",
+                  "Open Sans",
+                ].map((font) => (
+                  <li key={font}>
+                    <button
+                      className="dropdown-item"
+                      onClick={() =>
+                        editor.chain().focus().setFontFamily(font).run()
+                      }
+                    >
+                      {font}
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -207,19 +218,23 @@ const Header = ({ editor }: { editor: any }) => {
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                title="Font Size"
               >
-                12
+                Font Size
               </button>
               <ul className="dropdown-menu">
-                <li>
-                  <button className="dropdown-item">10</button>
-                </li>
-                <li>
-                  <button className="dropdown-item">12</button>
-                </li>
-                <li>
-                  <button className="dropdown-item">14</button>
-                </li>
+                {[12, 14, 16, 18, 20, 22, 24, 26, 28, 30].map((size) => (
+                  <li key={size}>
+                    <button
+                      className="dropdown-item"
+                      onClick={() =>
+                        editor.chain().focus().setFontSize(`${size}px`).run()
+                      }
+                    >
+                      {size}px
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
 

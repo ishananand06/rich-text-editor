@@ -5,6 +5,9 @@ import Underline from "@tiptap/extension-underline";
 import Highlight from "@tiptap/extension-highlight";
 import Header from "./components/Header";
 import Body from "./components/body";
+import FontFamily from "@tiptap/extension-font-family";
+import TextStyle from '@tiptap/extension-text-style';
+import FontSize from "tiptap-extension-font-size";
 
 function App() {
   // Initialize the editor
@@ -17,6 +20,11 @@ function App() {
       Underline,
       Highlight.configure({
         multicolor: true,
+      }),
+      FontFamily,
+      TextStyle,
+      FontSize.configure({
+        types: ['textStyle'], 
       }),
     ],
     content: "<p>Start typing here...</p>",
