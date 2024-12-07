@@ -8,6 +8,7 @@ import Body from "./components/body";
 import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from '@tiptap/extension-text-style';
 import FontSize from "tiptap-extension-font-size";
+import { Color } from '@tiptap/extension-color';
 
 function App() {
   // Initialize the editor
@@ -26,6 +27,7 @@ function App() {
       FontSize.configure({
         types: ['textStyle'], 
       }),
+      Color
     ],
     content: "<p>Start typing here...</p>",
   });

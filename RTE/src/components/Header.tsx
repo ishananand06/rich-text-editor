@@ -240,33 +240,42 @@ const Header = ({ editor }: { editor: any }) => {
 
             {/* Font Color Picker */}
             <input
+              title="Colour Picker"
               type="color"
-              className="form-control form-control-color"
-              title="Font Color"
+              onInput={(event) => {
+                const target = event.target as HTMLInputElement;
+                editor.chain().focus().setColor(target.value).run();
+              }}
+              value={editor?.getAttributes("textStyle").color || "#000000"}
+              data-testid="setColor"
             />
 
             {/* Formatting Icons */}
             <button
               className="btn btn-outline-secondary"
               onClick={() => editor.chain().focus().toggleBold().run()}
+              title="Bold"
             >
               <b>B</b>
             </button>
             <button
               className="btn btn-outline-secondary"
               onClick={() => editor.chain().focus().toggleItalic().run()}
+              title="Italic"
             >
               <i>I</i>
             </button>
             <button
               className="btn btn-outline-secondary"
               onClick={() => editor.chain().focus().toggleUnderline().run()}
+              title="Underline"
             >
               <u>U</u>
             </button>
             <button
               className="btn btn-outline-secondary"
               onClick={() => editor.chain().focus().toggleStrike().run()}
+              title="Strikethrough"
             >
               <s>S</s>
             </button>
