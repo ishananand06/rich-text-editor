@@ -1,4 +1,3 @@
-import React from "react";
 import { EditorContent } from "@tiptap/react";
 
 const Body = ({ editor }: { editor: any }) => {

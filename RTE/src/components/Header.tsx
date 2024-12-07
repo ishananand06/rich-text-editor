@@ -3,8 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "@flaticon/flaticon-uicons/css/all/all.css";
 
-
 const Header = ({ editor }: { editor: any }) => {
+  const currentType = editor?.getAttributes("heading")?.level || "paragraph";
+
   return (
     <>
       {/* First Row of Navbar */}
@@ -55,6 +56,7 @@ const Header = ({ editor }: { editor: any }) => {
           {/* Center Section: Dropdowns and Toolbar */}
           <div className="d-flex align-items-center gap-3 mx-auto">
             {/* Normal Text Dropdown */}
+
             <div className="dropdown">
               <button
                 className="btn btn-outline-secondary dropdown-toggle"
@@ -62,17 +64,54 @@ const Header = ({ editor }: { editor: any }) => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Normal Text
+                {currentType === "paragraph"
+                  ? "Normal Text"
+                  : `Heading ${currentType}`}
               </button>
               <ul className="dropdown-menu">
                 <li>
-                  <button className="dropdown-item">Heading 1</button>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => editor.chain().focus().setParagraph().run()}
+                  >
+                    Normal Text
+                  </button>
                 </li>
                 <li>
-                  <button className="dropdown-item">Heading 2</button>
+                  <button
+                    className={`dropdown-item ${
+                      currentType === "1" ? "is-active" : ""
+                    }`}
+                    onClick={() =>
+                      editor.chain().focus().toggleHeading({ level: 1 }).run()
+                    }
+                  >
+                    Heading 1
+                  </button>
                 </li>
                 <li>
-                  <button className="dropdown-item">Heading 3</button>
+                  <button
+                    className={`dropdown-item ${
+                      currentType === "1" ? "is-active" : ""
+                    }`}
+                    onClick={() =>
+                      editor.chain().focus().toggleHeading({ level: 2 }).run()
+                    }
+                  >
+                    Heading 2
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={`dropdown-item ${
+                      currentType === "1" ? "is-active" : ""
+                    }`}
+                    onClick={() =>
+                      editor.chain().focus().toggleHeading({ level: 3 }).run()
+                    }
+                  >
+                    Heading 3
+                  </button>
                 </li>
               </ul>
             </div>
@@ -192,7 +231,13 @@ const Header = ({ editor }: { editor: any }) => {
             <button
               className="btn btn-outline-secondary"
               title="Highlight"
-              onClick={() => editor.chain().focus().toggleHighlight({ color: '#ffc078' }).run()}
+              onClick={() =>
+                editor
+                  .chain()
+                  .focus()
+                  .toggleHighlight({ color: "#ffc078" })
+                  .run()
+              }
             >
               <i className="fi fi-rr-highlighter-line"></i>
             </button>
