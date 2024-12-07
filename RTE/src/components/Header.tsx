@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "@flaticon/flaticon-uicons/css/all/all.css";
 
-function Header() {
+
+const Header = ({ editor }: { editor: any }) => {
   return (
     <>
       {/* First Row of Navbar */}
@@ -164,24 +165,41 @@ function Header() {
             />
 
             {/* Formatting Icons */}
-            <button className="btn btn-outline-secondary">
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => editor.chain().focus().toggleBold().run()}
+            >
               <b>B</b>
             </button>
-            <button className="btn btn-outline-secondary">
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => editor.chain().focus().toggleItalic().run()}
+            >
               <i>I</i>
             </button>
-            <button className="btn btn-outline-secondary">
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => editor.chain().focus().toggleUnderline().run()}
+            >
               <u>U</u>
             </button>
-            <button className="btn btn-outline-secondary">
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => editor.chain().focus().toggleStrike().run()}
+            >
               <s>S</s>
             </button>
-            <button className="btn btn-outline-secondary" title="Highlight">
+            <button
+              className="btn btn-outline-secondary"
+              title="Highlight"
+              onClick={() => editor.chain().focus().toggleHighlight({ color: '#ffc078' }).run()}
+            >
               <i className="fi fi-rr-highlighter-line"></i>
             </button>
             <button
               className="btn btn-outline-secondary"
               title="Erase Formatting"
+              onClick={() => editor.chain().focus().unsetAllMarks().run()}
             >
               <i className="fi fi-rr-eraser"></i>
             </button>
@@ -204,6 +222,6 @@ function Header() {
       </nav>
     </>
   );
-}
+};
 
 export default Header;
