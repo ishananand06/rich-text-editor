@@ -3,8 +3,6 @@ import StarterKit from "@tiptap/starter-kit";
 import TextAlign from "@tiptap/extension-text-align";
 import Underline from "@tiptap/extension-underline";
 import Highlight from "@tiptap/extension-highlight";
-import Heading from '@tiptap/extension-heading';
-import History from '@tiptap/extension-history'
 import Header from "./components/Header";
 import Body from "./components/body";
 
@@ -20,10 +18,6 @@ function App() {
       Highlight.configure({
         multicolor: true,
       }),
-      Heading.configure({
-        levels: [1, 2, 3],
-      }),
-      History,
     ],
     content: "<p>Start typing here...</p>",
   });
