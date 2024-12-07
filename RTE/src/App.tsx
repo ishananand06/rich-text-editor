@@ -6,9 +6,11 @@ import Highlight from "@tiptap/extension-highlight";
 import Header from "./components/Header";
 import Body from "./components/body";
 import FontFamily from "@tiptap/extension-font-family";
-import TextStyle from '@tiptap/extension-text-style';
+import TextStyle from "@tiptap/extension-text-style";
 import FontSize from "tiptap-extension-font-size";
-import { Color } from '@tiptap/extension-color';
+import { Color } from "@tiptap/extension-color";
+import Image from "@tiptap/extension-image";
+import { Link } from "@tiptap/extension-link";
 
 function App() {
   // Initialize the editor
@@ -25,9 +27,13 @@ function App() {
       FontFamily,
       TextStyle,
       FontSize.configure({
-        types: ['textStyle'], 
+        types: ["textStyle"],
       }),
-      Color
+      Color,
+      Image.configure({
+        inline: true,
+      }),
+      Link,
     ],
     content: "<p>Start typing here...</p>",
   });

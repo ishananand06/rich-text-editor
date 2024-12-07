@@ -6,6 +6,27 @@ import "@flaticon/flaticon-uicons/css/all/all.css";
 const Header = ({ editor }: { editor: any }) => {
   const currentType = editor?.getAttributes("heading")?.level || "paragraph";
 
+  const insertImage = () => {
+    const imageUrl = prompt("Enter image URL");
+
+    if (imageUrl) {
+      editor
+        .chain()
+        .focus()
+        .setImage({
+          src: imageUrl,
+        })
+        .run();
+    }
+  };
+
+  const insertLink = () => {
+    const url = prompt("Enter the URL");
+    if (url) {
+      editor.chain().focus().setLink({ href: url }).run();
+    }
+  };
+
   return (
     <>
       {/* First Row of Navbar */}
@@ -23,18 +44,6 @@ const Header = ({ editor }: { editor: any }) => {
                 <NavDropdown.Item href="#save">Save</NavDropdown.Item>
                 <NavDropdown.Item href="#download">Download</NavDropdown.Item>
               </NavDropdown>
-            </Nav>
-            <Nav>
-              <NavDropdown title="User" id="userDropdown" align="end">
-                <NavDropdown.Item href="#profile">Profile</NavDropdown.Item>
-                <NavDropdown.Item href="#settings">Settings</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#logout">Logout</NavDropdown.Item>
-              </NavDropdown>
-
-              <Button variant="outline-primary" className="ms-2">
-                Share
-              </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -301,19 +310,28 @@ const Header = ({ editor }: { editor: any }) => {
             </button>
 
             {/* List and Insert Icons */}
-            <button className="btn btn-outline-secondary" title="Bullet Points">
+            <button
+              className="btn btn-outline-secondary"
+              title="Bullet Points"
+              onClick={() => editor.chain().focus().toggleBulletList().run()}
+            >
               <i className="fi fi-rr-list"></i>
             </button>
-            <button className="btn btn-outline-secondary" title="Insert Image">
+            <button
+              className="btn btn-outline-secondary"
+              title="Insert Image"
+              onClick={insertImage}
+            >
               <i className="fi fi-rr-picture"></i>
             </button>
-            <button className="btn btn-outline-secondary" title="Insert Link">
+            <button
+              className="btn btn-outline-secondary"
+              title="Insert Link"
+              onClick={insertLink}
+            >
               <i className="fi fi-rr-link"></i>
             </button>
           </div>
-
-          {/* Empty Div for Right Section */}
-          <div></div>
         </div>
       </nav>
     </>
